@@ -17,7 +17,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "hold-preferred";
+            quick-tap-ms = <175>;
+            flavor = "tap-preferred";
         };
 
         mo_mt: mo_mt {
@@ -27,7 +28,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "hold-preferred";
+            quick-tap-ms = <175>;
+            flavor = "balanced";
         };
     };
 
@@ -36,11 +38,14 @@
 
         default_layer {
             // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
+            // | DEL/ESC |  1  |  2  |  3  |  4  |  5  |                     |  6  |  7  |  8  |  9  |  0  |   `    |
+            // | CAPS/TAB|  Q  |  W  |  E  |  R  |  T  |                     |  Y  |  U  |  I  |  O  |  P  |  =/-   |
+            // | LSHIFT  |  A  |  S  |  D  |  F  |  G  |                     |  H  |  J  |  K  |  L  |  ;  |   '    |
+            // | GLOBE   |  Z  |  X  |  C  |  V  |  B  | MO2/[ |  | MO3/] |  N  |  M  |  ,  |  .  | /\\ | RSHIFT |
+            //                      | LCTRL | LALT | LGUI | SPACE |  | ENTER | MO1 | BSPC | RGUI |
+            // hold-taps: DEL/ESC = tap ESC · hold DELETE  |  CAPS/TAB = tap TAB · hold CAPSLOCK
+            //           =/- = tap - · hold =  |  /\\ = tap / · hold \  |  MO2/[ e MO3/] = hold entra na layer · tap [ ]
+            // layers:    MO1 = &mo 1 (navigation)  |  MO2 = raise_layer (2)  |  MO3 = layer_3 (3)
 
             bindings = <
 &holdtap DELETE ESC    &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                                                             &kp N6  &kp N7         &kp N8     &kp N9   &kp N0                   &kp GRAVE
@@ -86,7 +91,7 @@
 
         layer_3 {
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans  &bt BT_CLR_ALL                    &trans  &trans  &trans  &trans  &trans  &sys_reset
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans  &bt BT_CLR_ALL                    &trans  &trans  &trans  &trans  &bootloader  &sys_reset
 &trans        &trans        &trans        &trans        &trans  &trans                            &trans  &trans  &trans  &trans  &trans  &trans
 &trans        &trans        &trans        &trans        &trans  &trans                            &trans  &trans  &trans  &trans  &trans  &trans
 &trans        &trans        &trans        &trans        &trans  &trans          &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
